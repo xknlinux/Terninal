@@ -3,7 +3,8 @@
 
 #include<stdio.h>
 
-int Get_Parameter(int argc, char *argv[]);
+int Get_Parameter(int argc, char **argv);
+
 
 
 #endif

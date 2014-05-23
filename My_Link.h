@@ -16,7 +16,4 @@ typedef struct Link
 ST_LINK *ST_Head_Path;
 ST_LINK *ST_Head_Parameter;
 
-ST_Head_Path = (ST_LINK *)malloc(sizeof(ST_LINK));
-ST_Head_Parameter = (ST_LINK *)malloc(sizeof(ST_LINK));
-
 #endif

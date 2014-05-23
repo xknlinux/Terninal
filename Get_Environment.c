@@ -15,34 +15,41 @@ int Get_Parameter(int argc, char **argv)
 	struct stat p;
 	ST_LINK *ST_Node, *p1, *p2;
 	ST_Head_Path = (ST_LINK *)malloc(sizeof(ST_LINK));
+
+	ST_Head_Path = (ST_LINK *)malloc(sizeof(ST_LINK));
+	ST_Head_Parameter = (ST_LINK *)malloc(sizeof(ST_LINK));
+
 	p1 = ST_Head_Path;
 	p2 = ST_Head_Parameter;
-	while(argv[i] != NULL)
+	while(argv[++i] != NULL)
 	{
-		i++;
-		stat(argv[i], argv[i]);
-		if(S_ISDIR(argv[i].st_mode))
+		memset(&p, 0, sizeof(struct stat));
+		stat(argv[i], &p);
+		if(S_ISDIR(p.st_mode))
 		{
-			ST_Node = malloc(sizeof(ST_Node));
-			srtcpy(ST_Node -> cMessage, argv[i]);
+			ST_Node = (ST_LINK *)malloc(sizeof(ST_Node));
+			memset(ST_Node->cMessage, 0, 128);
+			strcpy(ST_Node -> cMessage, argv[i]);
 			p1->next = ST_Node;
 			p1 = p1 -> next;
+			p1->next = NULL;
 			continue;
 			
 		}
-		if(argv[i][0] == '-')
+		else if(argv[i][0] == '-')
 		{
 			j=0;
-			ST_Node = malloc(sizeof(ST_Node));
+			ST_Node = (ST_LINK *)malloc(sizeof(ST_Node));
 			while(j < strlen(argv[i]) -1)
 			{
 				argv[i][j] = argv[i][j+1];
 				j++;
 			}
-			srtcpy(ST_Node -> cMessage, argv[i]);
+			memset(ST_Node->cMessage, 0, 128);
+			strcpy(ST_Node -> cMessage, argv[i]);
 			p2->next = ST_Node;
-			P2 = P2 -> next;
-
+			p2 = p2 -> next;
+			p2->next = NULL;
 		}
 		else
 			printf("ls: cannot access %s: No such file or directory\n", argv[i]);
