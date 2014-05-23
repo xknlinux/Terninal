@@ -4,7 +4,6 @@
 #include<sys/types.h>
 
 #include"My_Ls.h"
-#include"My_Link.h"
 #include"Get_Environment.h"
 
 int PARAMETER_MARK;
@@ -17,8 +16,7 @@ int main(int argc, char *argv[])
 		Run_Function();
 	}
 
-	Get_Path(argc, argv); 		//Get the current path
-	//Get_Parameter(argc, argv); 	//Get the Parameter
+	Get_Parameter(argc, argv); 	//Get the Parameter
 
 	return TRUE;
 }

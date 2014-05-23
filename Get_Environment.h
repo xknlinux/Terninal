@@ -3,8 +3,7 @@
 
 #include<stdio.h>
 
-int Get_Path(argc, argv);
-
+int Get_Parameter(int argc, char *argv[]);
 
 
 #endif

@@ -6,8 +6,6 @@
 
 #define NO_PARAMETER 10
 
-
-
 void my_err(const char *err_string, int line);
 int Display_File(char *cPath);
 int Run_Function();
