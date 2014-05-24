@@ -5,12 +5,12 @@
 
 #include"My_Link.h"
 #include"My_Ls.h"
-#include"Get_Environment.h"
 
 int PARAMETER_MARK;
 
 extern ST_LINK *ST_Head_Path;
 extern ST_LINK *ST_Head_Parameter;
+ST_LINK *ST_Head_Name;
 int main(int argc, char *argv[])
 {
 
@@ -90,6 +90,8 @@ int Display_File_Data(const char *cPath)
 {
 	DIR *dFd;
 	struct dirent *ST_Ptr;
+	ST_Head_Name = (ST_LINK *)malloc(sizeof(ST_LINK));
+	ST_LINK *p = ST_Head_Name;
 
 	if((dFd = opendir(cPath)) == NULL)
 	{
@@ -97,12 +99,23 @@ int Display_File_Data(const char *cPath)
 	}
 	while((ST_Ptr = readdir(dFd)) != NULL)
 	{
-		printf("%s  ", ST_Ptr->d_name);
-		ST_Ptr = NULL;
+		Insert_Link(&p, ST_Ptr->d_name);
 	}
 
+	Out_Put();
 	printf("\n");
 	return TRUE;
+}
+
+void Out_Put()
+{
+	ST_LINK *w = ST_Head_Name->next;
+
+	while(w != NULL)
+	{
+		printf("%s  ", w->cMessage);
+		w = w->next;
+	}
 }
 
 void my_err(const char *err_string, int line)

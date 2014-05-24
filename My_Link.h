@@ -15,5 +15,7 @@ typedef struct Link
 
 ST_LINK *ST_Head_Path;
 ST_LINK *ST_Head_Parameter;
+int Get_Parameter(int argc, char **argv);
+int Insert_Link(ST_LINK **p, const char *cName);
 
 #endif

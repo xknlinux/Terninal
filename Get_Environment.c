@@ -5,7 +5,6 @@
 #include <unistd.h>
 
 
-#include"Get_Environment.h"
 #include"My_Link.h"
 
 
@@ -28,11 +27,7 @@ int Get_Parameter(int argc, char **argv)
 		if(S_ISDIR(p.st_mode))
 		{
 			ST_Node = (ST_LINK *)malloc(sizeof(ST_Node));
-			memset(ST_Node->cMessage, 0, 128);
-			strcpy(ST_Node -> cMessage, argv[i]);
-			p1->next = ST_Node;
-			p1 = p1 -> next;
-			p1->next = NULL;
+			Insert_Link(&p1, argv[i]);
 			continue;
 			
 		}
@@ -45,11 +40,7 @@ int Get_Parameter(int argc, char **argv)
 				argv[i][j] = argv[i][j+1];
 				j++;
 			}
-			memset(ST_Node->cMessage, 0, 128);
-			strcpy(ST_Node -> cMessage, argv[i]);
-			p2->next = ST_Node;
-			p2 = p2 -> next;
-			p2->next = NULL;
+			Insert_Link(&p2, argv[i]);
 		}
 		else
 			printf("ls: cannot access %s: No such file or directory\n", argv[i]);
