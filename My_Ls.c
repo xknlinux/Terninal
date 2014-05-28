@@ -217,6 +217,7 @@ int Display_File_Data(const char *cPath)  				//读取目录下的文件
 	
 	if((PARAMETER_MARK & L_PARAMETER) == L_PARAMETER) 		//有-l选项
 	{
+		printf("total %d\n", iNumber); 		//输出文件总数
 		p = ST_Head_Name->next;
 		while(p != NULL)
 		{
@@ -286,13 +287,13 @@ void print(ST_LINK *Node) 			//带有颜色的输出
 	else if(Node->iSign == DIR_)
 		printf("\033[;34m%s\033[0m   ", Node->cMessage);
 	else if(Node->iSign == LINK_)
-		printf("\033[;35m%s\033[0m   ", Node->cMessage);
+		printf("\033[;36m%s\033[0m   ", Node->cMessage);
 	else if(Node->iSign == BLOCK_)
-		printf("\033[;32m%s\033[0m   ", Node->cMessage);
-	else if(Node->iSign == FIFO_)
 		printf("\033[;37m%s\033[0m   ", Node->cMessage);
-	else if(Node->iSign == SOCKET_)
+	else if(Node->iSign == FIFO_)
 		printf("\033[;31m%s\033[0m   ", Node->cMessage);
+	else if(Node->iSign == SOCKET_)
+		printf("\033[;35m%s\033[0m   ", Node->cMessage);
 	else
 		printf("%s   ", Node->cMessage);
 }
