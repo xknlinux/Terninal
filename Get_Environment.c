@@ -4,7 +4,6 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-
 #include"My_Link.h"
 
 
@@ -27,7 +26,7 @@ int Get_Parameter(int argc, char **argv)
 		if(S_ISDIR(p.st_mode))
 		{
 			ST_Node = (ST_LINK *)malloc(sizeof(ST_Node));
-			Insert_Link(&p1, argv[i]);
+			Insert_Link(&p1, argv[i], 1);
 			continue;
 			
 		}
@@ -40,7 +39,7 @@ int Get_Parameter(int argc, char **argv)
 				argv[i][j] = argv[i][j+1];
 				j++;
 			}
-			Insert_Link(&p2, argv[i]);
+			Insert_Link(&p2, argv[i], 0);
 		}
 		else
 			printf("ls: cannot access %s: No such file or directory\n", argv[i]);
