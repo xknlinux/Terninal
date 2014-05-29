@@ -15,28 +15,23 @@
 #define A_PARAMETER 2
 #define D_PARAMETER 4
 
-#define FILE_ 1
-#define DIR_ 2
-#define LINK_ 3
-#define BLOCK_ 4
-#define FIFO_ 5
-#define SOCKET_ 6
-
-
-
-int PARAMETER_MARK;
+extern int PARAMETER_MARK;
 
 void my_err(const char *err_string, int line);
-void Display_File();
-int Display_File_Data(const char *cPath);
+int Display_File(const char *cPath);
 int Run_Function();
 int Before_Running();
-void Shine_Upon(char cCharacter);
+void My_Sort_Pre();
 void Out_Put();
-void My_Sort();
+void My_Sort(int (*My_Strcmp)(ST_LINK*, ST_LINK*));
 void print(ST_LINK *Node);
-void D_NoL();
-int Da_Xiao();
 int Display_LL(struct stat buf, ST_LINK *p);
+int Run_Function(int argc, char *argv[]);
+int Switch_Function(const char *cPath);
+int Display_DD(const char *cPath);
 
+int Cmp_Name(ST_LINK *p1, ST_LINK *p2);
+int Cmp_Size(ST_LINK *p1, ST_LINK *p2);
+
+void readme();
 #endif

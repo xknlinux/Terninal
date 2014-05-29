@@ -3,6 +3,10 @@
 
 #include<stdio.h>
 #include<malloc.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
 
 
 #define TRUE 0
@@ -12,13 +16,14 @@
 typedef struct Link
 {
 	char cMessage[128];
+	struct stat buf;
 	struct Link *next;
-	int iSign; 			//标记颜色
 }ST_LINK;
 
-ST_LINK *ST_Head_Path;
-ST_LINK *ST_Head_Parameter;
+extern ST_LINK *ST_Head_Path;
+extern ST_LINK *ST_Head_Parameter;
+extern char ST_Head_Parameter_Sort[128];
 int Get_Parameter(int argc, char **argv);
-int Insert_Link(ST_LINK **p, const char *cName, int SIGN);
+int Insert_Link(ST_LINK **p, const char *cName);
 
 #endif
